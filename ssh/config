@@ -1,0 +1,20 @@
+#Gitlab Account
+
+Host gitlab.com
+ HostName gitlab.com
+ User git
+ IdentityFile ~/.ssh/gitlab
+
+
+# Github Account
+
+Host github.com
+ Hostname github.com
+ User git
+ IdentityFile ~/.ssh/github
+
+# Heroku Account
+Host heroku.com
+ Hostname heroku.com
+ User git
+ IdentityFile ~/.ssh/heroku

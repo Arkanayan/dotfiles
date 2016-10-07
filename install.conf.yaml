@@ -1,0 +1,14 @@
+- clean: ['~']
+
+- link:
+    ~/.ssh/config:
+        path: ssh/config
+        create: true
+    ~/.zprofile: zprofile
+    ~/.zshrc: zshrc
+    ~/.xinitrc: xinitrc
+    ~/.config/i3:
+        path: config/i3/
+        create: true
+
+
