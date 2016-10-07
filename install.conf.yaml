@@ -10,5 +10,11 @@
     ~/.config/i3:
         path: config/i3/
         create: true
-
+    /etc/fstab:
+        path: fstab
+        force: false
+    /etc/default/tlp:
+        path: tlp
+        force: true
+        relink: true
 
