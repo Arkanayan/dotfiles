@@ -86,3 +86,6 @@ alias zshconfig="vim ~/.zshrc"
 export LC_CTYPE=en_US.UTF-8
 
 alias i3config="vim ~/.config/i3/config"
+
+export VISUAL=vim
+export EDITOR=vim

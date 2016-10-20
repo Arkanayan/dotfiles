@@ -41,7 +41,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-bindsym $mod+d exec "rofi -combi-modi window,drun -show combi" 
+bindsym $mod+d exec "rofi -combi-modi window,drun,run -show combi" 
 
 # change focus
 bindsym $mod+j focus left
@@ -181,16 +181,22 @@ bindsym $mod+Escape mode "$mode_system"
 for_window [class="(?i)mplayer"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
-
+for_window [class="mpv|feh"] floating enable
+for_window [class="Tixati"] floating enable, border normal
 # configure multimedia keys
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+set $volume_step 5
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +$volume_step% && amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -$volume_step% && amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+# Toggle volume
+#bindsym XF86AudioMute exec --no-startup-id amixer set Master toggle; if [[ -n $(amixer get Master | grep 'Mono:' | grep -o "\[off\]") ]] ; then volnoti-show -m -v; else amixer get Master | egrep -o "([0-9]+)%" | egrep -o "[0-9]+" | xargs -0 volnoti-show; fi
+#bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && if [[ -n $(amixer get Master | grep 'Mono:' |
 #
 # # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+set $brightness_step 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc $brightness_step  && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(xbacklight -get) # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec $brightness_step && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(xbacklight -get) # decrease screen brightness
 #
 # # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
@@ -198,12 +204,16 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 # # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym $mod+Ctrl+semicolon exec playerctl next
+bindsym $mod+Ctrl+j exec playerctl previous
 
 # Startup programs
-exec redshift
+exec --no-startup-id redshift-gtk
 exec compton
-
+# Set wallpaper
+exec ~/.fehbg
+# Volume notification
+exec volnoti -t0.3 
+# exec --no-startup-id conky 
 # rofi
 #bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
