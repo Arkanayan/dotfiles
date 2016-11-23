@@ -217,3 +217,8 @@ exec volnoti -t0.3
 # exec --no-startup-id conky 
 # rofi
 #bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
+
+# CMUS Controls
+bindsym $mod+Ctrl+space exec "cmus-remote -u" 
+bindsym $mod+Ctrl+n exec "cmus-remote --next"
+bindsym $mod+Ctrl+p exec "cmus-remote --prev"
