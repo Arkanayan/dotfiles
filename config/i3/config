@@ -182,7 +182,7 @@ for_window [class="(?i)mplayer"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [class="mpv|feh"] floating enable
-for_window [class="Tixati"] floating enable, border normal
+#for_window [class="Tixati"] floating enable, border normal
 # configure multimedia keys
 # Pulse Audio controls
 set $volume_step 5
