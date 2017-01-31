@@ -41,7 +41,7 @@ CPU_SCALING_GOVERNOR_ON_BAT=powersave
 #CPU_SCALING_MIN_FREQ_ON_AC=0
 #CPU_SCALING_MAX_FREQ_ON_AC=0
 #CPU_SCALING_MIN_FREQ_ON_BAT=0
-#CPU_SCALING_MAX_FREQ_ON_BAT=0
+CPU_SCALING_MAX_FREQ_ON_BAT=1200000
 
 # Set Intel P-state performance: 0..100 (%)
 # Limit the max/min P-state to control the power dissipation of the CPU.
@@ -50,7 +50,7 @@ CPU_SCALING_GOVERNOR_ON_BAT=powersave
 CPU_MIN_PERF_ON_AC=0
 CPU_MAX_PERF_ON_AC=100
 CPU_MIN_PERF_ON_BAT=0
-CPU_MAX_PERF_ON_BAT=70
+CPU_MAX_PERF_ON_BAT=50
 
 # Set the CPU "turbo boost" feature: 0=disable, 1=allow
 # Requires an Intel Core i processor.
