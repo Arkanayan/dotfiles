@@ -89,3 +89,6 @@ alias i3config="vim ~/.config/i3/config"
 
 export VISUAL=vim
 export EDITOR=vim
+
+# Ruby make gem executable
+PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
