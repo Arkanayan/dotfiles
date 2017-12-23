@@ -81,14 +81,24 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export LC_CTYPE=en_US.UTF-8
 
-alias i3config="vim ~/.config/i3/config"
+alias i3config="nvim ~/.config/i3/config"
 
 export VISUAL=vim
 export EDITOR=vim
 
 # Ruby make gem executable
 PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+
+# For virtualenv
+export WORKON_HOME=~/Envs
+source /usr/bin/virtualenvwrapper.sh
+
+# added by Miniconda3 4.3.11 installer
+export PATH="/home/arka/miniconda3/bin:$PATH"
+export PATH=~/.local/bin:$PATH
+
+alias vim=nvim

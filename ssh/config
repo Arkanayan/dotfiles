@@ -18,3 +18,9 @@ Host heroku.com
  Hostname heroku.com
  User git
  IdentityFile ~/.ssh/heroku
+
+# MantraLabs Git
+host git.mantralabsglobal.com
+ HostName git.mantralabsglobal.com
+ IdentityFile ~/.ssh/mantra_git_key
+ User git

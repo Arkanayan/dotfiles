@@ -154,7 +154,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         #status_command i3status
-        status_command ~/.config/i3/measure-net-speed-i3status.bash
+        #status_command ~/.config/i3/measure-net-speed-i3status.bash
+        status_command i3blocks
 }
 
 bindsym $mod+x [urgent=latest] focus
@@ -194,7 +195,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 #bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && if [[ -n $(amixer get Master | grep 'Mono:' |
 #
 # # Sreen brightness controls
-set $brightness_step 10
+set $brightness_step 5 
 bindsym XF86MonBrightnessUp exec xbacklight -inc $brightness_step  && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(xbacklight -get) # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec $brightness_step && volnoti-show -s /usr/share/pixmaps/volnoti/display-brightness-symbolic.svg $(xbacklight -get) # decrease screen brightness
 #
@@ -213,7 +214,8 @@ exec compton
 # Set wallpaper
 exec ~/.fehbg
 # Volume notification
-exec volnoti -t0.3 
+#exec --no-startup-id volumeicon
+#exec volnoti -t0.3 
 # exec --no-startup-id conky 
 # rofi
 #bindsym F2 exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu'
@@ -222,3 +224,10 @@ exec volnoti -t0.3
 bindsym $mod+Ctrl+space exec "cmus-remote -u" 
 bindsym $mod+Ctrl+n exec "cmus-remote --next"
 bindsym $mod+Ctrl+p exec "cmus-remote --prev"
+
+for_window [class="^.*"] border pixel 0
+gaps inner 5
+gaps outer 2 
+smart_gaps on
+for_window [floating] border normal
+for_window [window_type="dialog"] bordar normal
